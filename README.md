@@ -95,7 +95,7 @@ This creates a relationship between a found item and its claim.
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/VEER2409/lost-and-found-management-system>
 ```
 
 ### 2. Navigate to the project
