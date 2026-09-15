@@ -15,7 +15,7 @@ def get_required_input(field_name):
 
         if valid:
             return value
-        print(message)
+        print(f"[bold red]{message}[/bold red]")
 
 
 #validator for date---------------------------------------
@@ -38,4 +38,4 @@ def check_date_format():
             if valid:
                 return found_date
 
-            print(message)
+            print(f"[bold red]{message}[/bold red]")

@@ -38,14 +38,14 @@ def register_found_item():
 
     item_data={
         "category":get_category(),
-        "item_name": get_required_input("Item Name :"),
+        "item_name": get_required_input("Item Name "),
         "brand": input("Brand (optional): "),
         "model": input("Model (optional): "),
-        "description": get_required_input("Description :"),
-        "found_location": get_required_input("Found Location :"),
+        "description": get_required_input("Description "),
+        "found_location": get_required_input("Found Location "),
         "found_date": check_date_format(),
-        "finder_name": get_required_input("Finder Name :"),
-        "finder_employee_id": get_required_input("Finder Employee ID :"),
+        "finder_name": get_required_input("Finder Name "),
+        "finder_employee_id": get_required_input("Finder Employee ID "),
         "storage_location": input("Storage Location (optional): ")
     }
 
