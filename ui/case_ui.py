@@ -1,44 +1,8 @@
 from rich.console import Console
-from rich.panel import Panel
 from rich.table import Table
-from rich.text import Text
+from ui.ui import format_status
 
 console=Console()
-#panel---------------------------------------------------------------------------
-def show_title():
-
-    info=Text(justify="center")
-    info.append(" LOST & FOUND MANAGEMENT SYSTEM \n",style="bold white")
-    info.append(" TCS - Lost Item Tracking & Claim Management ",style="dim")
-
-
-    console.print(
-
-
-        Panel(
-            info,
-            title=" [bold cyan] RECEPTION DESK [/bold cyan]",
-            border_style="cyan",
-            padding=(1,4)
-        )
-    )
-#main menu----------------------------------------------------------------------
-
-def show_main_menu():
-    table=Table(
-        title="\n\n[bold cyan] Main Menu [/bold cyan]",
-        show_lines=True
-        )
-
-    table.add_column("Option",justify="center" , style="bold cyan")
-    table.add_column("Operation", style="white")
-
-    table.add_row("1","[bold green]Case Management [/bold green]")
-    table.add_row("2","[bold green]Claim Management [/bold green]")
-    table.add_row("3","[bold green]Export Data To Excel [/bold green]")
-    table.add_row("4","[bold yellow] EXIT [/bold yellow]")
-
-    console.print(table)
 
 #show_case menu-------------------------------------------------------------------
 
@@ -61,90 +25,7 @@ def show_case_menu():
     console.print(table)
 
 
-#show claim menu --------------------------------------------------------------------
-
-def show_claim_menu():
-    table = Table(
-        title="[bold cyan] CLAIM MANAGEMENT [/bold cyan]",
-        show_lines=True
-        )
-
-    table.add_column("Option", justify="center",style="bold cyan")
-    table.add_column("Operation",style="bold white")
-
-    table.add_row("1", "[bold green] Create Claim [/bold green]")
-    table.add_row("2", "[bold green] View Claim [/bold green]")
-    table.add_row("3", "[bold green] Approve Claim [/bold green]")
-    table.add_row("4", "[bold red] Reject Claim [/bold red]")
-    table.add_row("5", "[bold yellow] Back [/bold yellow]")
-
-    console.print(table)
-
-#-------------------------- category menu ---------------------------------
-def show_category():
-    table=Table(title="SELECT CATEGORY")
-
-    table.add_column("Choice")
-    table.add_column("Category")
-
-    table.add_row("1", "Electronics")
-    table.add_row("2", "ID / Documents")
-    table.add_row("3", "Jewelry")
-    table.add_row("4", "Bags & Accessories")
-    table.add_row("5", "Clothing")
-    table.add_row("6", "Books & Stationery")
-    table.add_row("7", "Keys")
-    table.add_row("8", "Office Equipment")
-    table.add_row("9", "Personal Items")
-    table.add_row("10", "Other")
-
-    console.print(table)
-#-------------------------- end category menu ---------------------------------
-
-#--------------------------  UPDATE MENU ---------------------------------
-def show_update_menu():
-    table=Table(title="SELECT UPDATE FIELD")
-
-    table.add_column("Choice")
-    table.add_column("UPDATE")
-
-    table.add_row("1", "Category")
-    table.add_row("2", "Item Name")
-    table.add_row("3", "Brand")
-    table.add_row("4", "Model")
-    table.add_row("5", "Description")
-    table.add_row("6", "Found Location")
-    table.add_row("7", "Found Date")
-    table.add_row("8", "Finder Name")
-    table.add_row("9", "Finder Employee ID")
-    table.add_row("10", "Storage Location")
-
-
-    console.print(table)
-#-------------------------- end UPDATE MENU ---------------------------------
-
-
-#view all---------------------------------------------------------------------------
-
-def format_status(status):
-
-    if not status:
-        return "[dim] NO DATA [/dim]"
-
-    if status=="Awaiting Claim":
-        return "[bold yellow]Awaiting Claim[/bold yellow]"
-
-    if status=="Claimed":
-        return "[bold green] Claimed [/bold green]"
-
-    if status=="Pending":
-        return "[bold blue] Pending [/bold blue]"
-
-    if status=="Rejected":
-        return "[bold red] Rejected [/bold red]"
-
-    return str(status)
-
+#view all cases menu-------------------------------------------------------------------
 
 def display_cases(cases):
     table=Table(title="\n[bold cyan]Found Items [/bold cyan]",show_lines=True)
@@ -207,6 +88,23 @@ def display_case(case):
     console.print(table)
 
 
+#  UPDATE MENU ---------------------------------
+def show_update_menu():
+    table=Table(title="SELECT UPDATE FIELD")
+
+    table.add_column("Choice")
+    table.add_column("UPDATE")
+
+    table.add_row("1", "Category")
+    table.add_row("2", "Item Name")
+    table.add_row("3", "Brand")
+    table.add_row("4", "Model")
+    table.add_row("5", "Description")
+    table.add_row("6", "Found Location")
+    table.add_row("7", "Found Date")
+    table.add_row("8", "Finder Name")
+    table.add_row("9", "Finder Employee ID")
+    table.add_row("10", "Storage Location")
 
 
-
+    console.print(table)

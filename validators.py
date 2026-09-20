@@ -1,6 +1,7 @@
 from datetime import datetime
-
-#validator for other fields------------------------------
+from ui.ui import console
+#------------------ CASE FIELD VALIDATORS ---------------------
+# <1> validator for other fields------------------------------
 
 def validate_required(value,field_name):
     if not value.strip():
@@ -15,10 +16,10 @@ def get_required_input(field_name):
 
         if valid:
             return value
-        print(f"[bold red]{message}[/bold red]")
+        console.print(f"[bold red]{message}[/bold red]")
 
 
-#validator for date---------------------------------------
+# <2> validator for date---------------------------------------
 
 
 def validate_date(date_text):
@@ -38,4 +39,54 @@ def check_date_format():
             if valid:
                 return found_date
 
-            print(f"[bold red]{message}[/bold red]")
+            console.print(f"[bold red]{message}[/bold red]")
+
+# <3> search case by id no. validation------------------------------
+
+def get_case_id():
+    while True:
+        case_id=input("Enter Case ID : ")
+        valid,message=validate_case_id(case_id)
+
+        if valid:
+            return case_id
+        console.print(f"[bold red]{message}[/bold red]")
+
+def validate_case_id(case_id):
+
+    case_id = case_id.strip().upper()
+    if not case_id.startswith("LF"):
+        return False,"Case ID must start with 'LF' "
+    if len(case_id) !=6 :
+        return False,"Case ID must be in the Format LF0000"
+    if not case_id[2:].isdigit():
+        return False,"Case ID must contain 4 digits after LF"
+    return True,case_id
+
+
+#------------------ CLAIM FIELD VALIDATORS ---------------------
+
+# <1> get and validate claim_id no.-------------------------------------
+
+def get_claim_id():
+    claim_id=input("Enter claim ID")
+    valid,result = validate_claim_id(claim_id)
+
+    if valid:
+        return result
+
+    console.print(f"[bold red] {result} [/bold red]")
+
+def validate_claim_id(claim_id):
+    claim_id=claim_id.strip().upper()
+
+    if not claim_id.startswith("CL"):
+        return False,"Claim ID starts with CL"
+    if len(claim_id) !=6 :
+        return False,"Claim ID must be in format CL0000"
+    if not claim_id[2:].isdigit():
+        return False,"Claim ID must contain 4 digits after CL "
+
+    return True,claim_id
+
+
