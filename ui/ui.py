@@ -72,13 +72,16 @@ def format_status(status):
         return "[dim] NO DATA [/dim]"
 
     if status=="Awaiting Claim":
-        return "[bold yellow]Awaiting Claim[/bold yellow]"
+        return "[bold white]Awaiting Claim[/bold white]"
 
     if status=="Claimed":
         return "[bold green] Claimed [/bold green]"
 
     if status=="Pending":
-        return "[bold blue] Pending [/bold blue]"
+        return "[bold yellow] Pending [/bold yellow]"
+
+    if status=="Approved":
+        return "[bold green] Approved [/bold green]"
 
     if status=="Rejected":
         return "[bold red] Rejected [/bold red]"

@@ -32,7 +32,7 @@ def validate_date(date_text):
 
 def check_date_format():
     while True:
-            found_date = input("Found Date (YYYY-MM-DD): ")
+            found_date = input("Found Date (YYYY-MM-DD) : ")
 
             valid, message = validate_date(found_date)
 
@@ -69,7 +69,7 @@ def validate_case_id(case_id):
 # <1> get and validate claim_id no.-------------------------------------
 
 def get_claim_id():
-    claim_id=input("Enter claim ID")
+    claim_id=input("Enter claim ID : ")
     valid,result = validate_claim_id(claim_id)
 
     if valid:

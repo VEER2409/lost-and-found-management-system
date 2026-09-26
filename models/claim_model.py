@@ -118,4 +118,23 @@ def get_claim_by_id(claim_id):
 
     return result
 
+# <4> operation 4 approve claim------------------------------------------------
+
+def update_claim_status(claim_id,status,verified_by):
+    connection=get_connection()
+    cursor=connection.cursor()
+
+    query="""update claims
+            set claim_status=%s,
+            verified_by_employee_id=%s
+            where claim_id=%s"""
+
+    values=(status,verified_by,claim_id)
+
+    cursor.execute(query, values)
+
+    connection.commit()
+
+    cursor.close()
+    connection.close()
 

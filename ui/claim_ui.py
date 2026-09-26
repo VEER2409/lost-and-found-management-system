@@ -1,6 +1,7 @@
 from rich.console import Console
 from rich.table import Table
 from rich.text import Text
+from ui.ui import format_status
 
 console=Console()
 #show claim menu --------------------------------------------------------------------
@@ -49,7 +50,7 @@ def display_all_claims(claims):
             claim["claimant_name"],
             claim["claimant_employee_id"],
             str(claim["claim_date"]),
-            claim["claim_status"]
+            format_status(claim["claim_status"])
         )
 
     console.print(table)
@@ -75,7 +76,7 @@ def display_claim(claim):
     table.add_row("Claimant EMP ID",claim['claimant_employee_id'])
     table.add_row("Claim Date",str(claim['claim_date']))
     table.add_row("Claim Description",claim['claim_description'])
-    table.add_row("Status",claim['claim_status'])
+    table.add_row ("Status",format_status(claim['claim_status']))
     table.add_row(
         "Verified By EMP_ID",
         claim['verified_by_employee_id'] or '-'

@@ -1,7 +1,11 @@
 from export_excel import export_to_excel
 from validators import get_case_id
 from models.model import case_exists
-from crud.claim_crud import create_claim,view_all_claim,search_claim
+from crud.claim_crud import (create_claim,
+                             view_all_claims,
+                             search_claim,
+                             approve_claim,
+                             reject_claim)
 from crud.case_crud import (register_found_item,
                        view_all_cases,
                        search_case,
@@ -84,15 +88,17 @@ def claim_management():
             create_claim()
 
         elif choice == "2":
-            view_all_claim()
+            view_all_claims()
 
         elif choice == "3":
             search_claim()
         elif choice == "4":
-            print("-------- APPROVE CLAIM --------")
+            print("APPROVE CLAIM")
+            approve_claim()
 
         elif choice == "5":
-            print("-------- REJECT CLAIM --------")
+            print("REJECT CLAIM")
+            reject_claim()
 
         elif choice == "6":
             break
